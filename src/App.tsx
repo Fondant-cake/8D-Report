@@ -4,6 +4,7 @@ import InputForm from "./components/InputForm";
 import WhyInterview from "./components/WhyInterview";
 import ReportViewer from "./components/ReportViewer";
 import WhyVisualization from "./components/WhyVisualization";
+import refreshingBg from "./assets/images/refreshing_sparkling_background_1783407861896.jpg";
 import { 
   AlertTriangle, 
   ShieldCheck, 
@@ -366,7 +367,16 @@ export default function App() {
   const progressPercent = isCompleted ? 100 : Math.round(((currentWhyIndex - 1) / 5) * 100);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] flex flex-col antialiased">
+    <div className="min-h-screen bg-[#FAF9F6] flex flex-col antialiased relative overflow-x-hidden">
+      {/* Dynamic Refreshing Ambient Background */}
+      <div 
+        className="fixed inset-0 pointer-events-none -z-10 bg-cover bg-center opacity-[0.06] mix-blend-multiply" 
+        style={{ backgroundImage: `url(${refreshingBg})` }}
+      />
+      <div 
+        className="fixed inset-0 pointer-events-none -z-10 bg-gradient-to-tr from-[#114037]/5 via-transparent to-[#2e7d72]/5 opacity-30"
+      />
+
       {/* G8D Bento Theme Header */}
       <header className="h-16 bg-slate-900 text-white flex items-center justify-between px-6 md:px-8 shrink-0 sticky top-0 z-30 shadow-md">
         <div className="flex items-center gap-3">
@@ -545,6 +555,29 @@ export default function App() {
                   <span>시스템 잠금 모드: 모든 분석 기능을 활성화하려면 아래에서 Gemini API Key를 등록 및 승인해 주십시오.</span>
                 </div>
               )}
+            </div>
+
+            {/* STUNNING HERO BRAND BANNER */}
+            <div className="relative w-full h-[220px] md:h-[320px] rounded-3xl overflow-hidden shadow-lg border-2 border-[#114037]/20 flex items-end">
+              <img 
+                src={refreshingBg} 
+                alt="Refreshing Sparkling QC Background" 
+                className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent" />
+              <div className="relative p-6 md:p-8 text-left w-full space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/20 backdrop-blur-md border border-emerald-400/30 text-emerald-300 rounded-md text-[10px] font-bold uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                  Refreshing Quality Solution
+                </div>
+                <h3 className="text-lg md:text-2xl font-extrabold text-white tracking-tight drop-shadow-sm">
+                  맑고 투명하게 추적하는 공학적 근본 원인 분석
+                </h3>
+                <p className="text-xs md:text-sm text-emerald-100/90 max-w-2xl font-medium drop-shadow-xs">
+                  탄산수처럼 청량하고 속이 뚫리는 투명한 5Why 인과 관계 추적으로 복잡하고 가려져 있던 공정 불량 원인을 단번에 해결합니다.
+                </p>
+              </div>
             </div>
 
             {/* GEMINI API KEY CONFIGURATION PANEL */}

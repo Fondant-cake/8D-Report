@@ -126,6 +126,7 @@ export default function WhyInterview({
         <AnimatePresence initial={false}>
           {/* 최초 진입 시스템 메시지 */}
           <motion.div
+            key="system-init-msg"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col gap-1.5 max-w-[90%]"
@@ -141,7 +142,7 @@ export default function WhyInterview({
 
           {/* 대화 히스토리 */}
           {whyHistory.map((item, idx) => (
-            <React.Fragment key={idx}>
+            <div key={`step-turn-${item.index}-${idx}`} className="space-y-4">
               {/* 질문 */}
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
@@ -171,12 +172,13 @@ export default function WhyInterview({
                   {item.answer}
                 </div>
               </motion.div>
-            </React.Fragment>
+            </div>
           ))}
 
           {/* 로딩 표시 */}
           {isLoading && (
             <motion.div
+              key="interview-loading"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
@@ -193,6 +195,7 @@ export default function WhyInterview({
           {/* 현재 질문 (진행 중) */}
           {!isCompleted && !isLoading && currentQuestion && (
             <motion.div
+              key={`current-question-${currentWhyIndex}`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               className="flex flex-col gap-1.5 max-w-[90%]"
@@ -211,6 +214,7 @@ export default function WhyInterview({
           {/* 최종 결과 도출 완료 */}
           {isCompleted && (
             <motion.div
+              key="interview-completed"
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
