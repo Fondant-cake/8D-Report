@@ -1,0 +1,8 @@
+{
+  "name": "8D Report & 5Why Analyzer",
+  "description": "품질관리 전문가 및 8D 프로세스 마스터가 제공하는 체계적인 8D 보고서 작성 및 대화식 5Why 근본원인 분석 솔루션",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
